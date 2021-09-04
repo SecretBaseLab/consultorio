@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 //? aqui empieza todo
 require_once "../vendor/autoload.php";
 session_start();
+
 //usando vars de entorno pa acceder a la config de la base
 //? estas dos lineas no necesita un servidor si ya tiene configurado en su sistema las variables de entorno como heroku
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
@@ -53,12 +54,52 @@ $map->get('index', $dir_raiz, [
     "action" => "indexAction"
 ]);
 
+$map->get('getClientes', $dir_raiz . 'clientes', [
+    "controller" => "App\Controllers\ClienteController",
+    "action" => "getClientesAction"
+]);
+$map->post('saveClientes', $dir_raiz . 'clientes/add', [
+    "controller" => "App\Controllers\ClienteController",
+    "action" => "postSaveClientesAction"
+]);
+
+$map->get('getExpedienteForm', $dir_raiz . 'expediente/{cedula}', [
+    "controller" => "App\Controllers\ExpedienteController",
+    "action" => "getExpedienteFormAction"
+]);
+$map->post('postNewExpedienteForm', $dir_raiz . 'expediente/add', [
+    "controller" => "App\Controllers\ExpedienteController",
+    "action" => "postNewExpedienteFormAction"
+]);
+
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
 if (!$route) {
-    echo 'no route';
+    // get the first of the best-available non-matched routes
+    $failedRoute = $matcher->getFailedRoute();
+
+    // which matching rule failed?
+    switch ($failedRoute->failedRule) {
+        case 'Aura\Router\Rule\Allows':
+            // 405 METHOD NOT ALLOWED
+            // Send the $failedRoute->allows as 'Allow:'
+            echo 'no permitido';
+            break;
+        case 'Aura\Router\Rule\Accepts':
+            // 406 NOT ACCEPTABLE
+            echo 'no se acepta';
+            break;
+        default:
+            // 404 NOT FOUND
+            echo 'no se encuentra lo q buscas';
+            break;
+    }
 } else {
+    // add route attributes to the request
+    foreach ($route->attributes as $key => $val) {
+        $request = $request->withAttribute($key, $val);
+    }
     // print_r( $route->handler);
     //recibe el array con el namesapce y la accion/metodo de esa clase
     $handlerData = $route->handler;
@@ -66,10 +107,16 @@ if (!$route) {
     $actionName = $handlerData['action'];
     $needsAuth = $handlerData['auth'] ?? false;
 
+    //autenticacion
+    $sessionUserId = $_SESSION['userId'] ?? null;
+    if ($needsAuth && !$sessionUserId) {    //? niega el acceso si no esta logeado
+        // echo 'protected route';
+        $response = new RedirectResponse('/');                            
+    }else{
+        $controller = new $controllerName;      //genera una instancia de esa clase
+        $response = $controller->$actionName($request);             //llama al metodo y recibe un obj response
+    }
 
-    $controller = new $controllerName;      //genera una instancia de esa clase
-    $response = $controller->$actionName($request);             //llama al metodo y recibe un obj response
-    
     //imprimendo los headers del response
     foreach ($response->getHeaders() as $name => $values) {
         foreach ($values as $value) {

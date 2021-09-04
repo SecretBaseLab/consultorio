@@ -1,0 +1,73 @@
+{% extends "main.twig" %}
+
+{% block title %}
+Expediente Local |
+{{ parent() }}
+{% endblock %}
+
+{% block plantilla %}
+<div class="container">
+    <br>
+    <br>
+    <section class="row py-3">
+        <div class="col-md-6 my-auto">
+            <h1>Nuevo Expediente</h1>
+            <h4>Cédula: {{cliente.cedula}}</h4>
+            <h4>Nombres: {{cliente.nombres}} {{cliente.apellidos}} </h4>
+        </div>
+        <div class="col-md-6">
+            <h5>Crear un Nuevo Expediente</h5>
+            <form id="formNewExpediente" enctype="multipart/form-data" method='POST' action="/expediente/add">
+                <label for="tipo">Tipo de Expediente</label>
+                <select class="custom-select form-control" name="tipo" id="tipo" required>
+                    <option selected disabled value="">Seleccionar</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Penal">Penal</option>
+                    <option value="Contencioso">Contencioso</option>
+                </select>
+
+                <label for="fecha_inicio_expediente">Fecha de Inicio del Expediente</label>
+                <input type="date" name="fecha_inicio_expediente" id="fecha_inicio_expediente" class="form-control"
+                    min="{{'now'|date('Y-m-d')}}" value="{{'now'|date('Y-m-d')}}" required>
+
+                <label for="adjuntos_expediente">
+                    <h5>Adjuntar Archivos al Expediente</h5>
+                </label>
+                <input type="file" class="form-control" name="adjuntos_expediente[]" id="adjuntos_expediente"
+                    placeholder="Adjuntar Archivos" required multiple>
+
+                <label for="notas_expediente">
+                    <h5>Notas del Expediente</h5>
+                </label>
+                <div id="notas_container" class="p-2">
+                    <textarea name="notas_expediente[]" id="notas_expediente" rows="4" class="form-control"
+                        placeholder="Descripción de la nota" required></textarea>
+                </div>
+                <input type="button" value="Nueva Nota" class="btn btn-outline-info" id="btnNewNota">
+
+                <input type="submit" class="btn btn-primary form-control" value="Guardar">
+
+            </form>
+
+        </div>
+    </section>
+</div>
+
+<script>
+    btnNewNota.onclick = ()=>{
+        const textarea = document.createElement("textarea");
+        textarea.placeholder="Nueva Notas del Expediente"
+        textarea.classList.add(['form-control'])
+        textarea.name="notas_expediente[]"
+        textarea.rows = 4
+        textarea.setAttribute('required', true)
+        notas_container.appendChild(textarea)
+    }
+</script>
+
+<style>
+    #notas_container{
+        background-color: #dfe4ea;
+    }
+</style>
+{% endblock %}

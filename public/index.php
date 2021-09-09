@@ -49,6 +49,11 @@ $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();      //? generador del mapa de rutas
 
 //rutas
+$map->get('login', $dir_raiz . 'login', [
+    "controller" => "App\Controllers\LoginController",
+    "action" => "getFormLoginAction"
+]);
+
 $map->get('index', $dir_raiz, [
     "controller" => "App\Controllers\IndexController",
     "action" => "indexAction"

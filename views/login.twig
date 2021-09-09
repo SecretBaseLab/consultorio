@@ -1,0 +1,73 @@
+{% extends "main.twig" %}
+
+{% block title %}
+Login |
+{{ parent() }}
+{% endblock %}
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block plantilla %}
+
+<style>
+    body{
+        background-image: linear-gradient(to bottom , rgba(55,59,68,0), rgba(66,134,244,1));
+    }
+    #autenticacion{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .forms_container{
+        border: 1px solid #000;
+    }
+
+</style>
+
+<section class="py-4" id="autenticacion">
+    <div class="forms_container">
+        <div class="row">
+            <div class="col">
+                <img src="../public/uploads/logo.png" alt="" class="w-100 p-5">
+            </div>
+        </div>
+        
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login"
+                    type="button" role="tab" aria-controls="pills-login" aria-selected="true">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup"
+                    type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Sign-up</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                <form action="post" id="form_login" class="">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" name="username" id="username" placeholder="Nombre de Usuario" class="form-control">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+
+                    <input type="submit" value="Login" class="btn btn-info form-control">
+
+                    <small>Olvidé mi password?</small>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                <form action="post" id="form_singup">
+                    <label for="">Núnmero de Cédula</label>
+                    <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Tu número de cédula" >
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

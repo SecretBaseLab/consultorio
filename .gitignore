@@ -2,3 +2,4 @@ vendor
 composer.phar
 base.db
 /.env
+public/uploads

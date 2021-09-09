@@ -227,3 +227,14 @@ create table audiencia(
         created_at DATETIME,
         updated_at DATETIME
     );
+
+create table usuarios(
+    cedula varchar(10) not null primary key,
+    rol VARCHAR(20) default "Admin" CHECK( rol="Admin" or rol="Secretario/a"),
+    nombres VARCHAR(50) not null,
+    apellidos varchar(50) not null,
+    telefono varchar(10) not null,
+    correo varchar(100) not null,
+    user_name varchar(50),
+    password text not null
+);

@@ -8,19 +8,89 @@
             background-attachment: fixed;
             background-size: cover;
         }
+        .fondo_logo{
+            background-image: linear-gradient(to bottom , rgba(55,59,68,.4), rgba(66,134,244,.6));
+        }
+        .home-text{
+            font-family: 'Dancing Script', cursive;
+        }
     </style>
-    <section class="d-flex flex-column justify-content-center align-items-center vh-100">
-        <div>
-            <h1 class="text-white">Consultorio NOMBRE</h1>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <section class="d-flex flex-column justify-content-center align-items-center vh-100 fondo_logo">
+        <div  class="text-white text-center home-text"> 
+            <h1 style="font-size: 60px;">ESTUDIO JURÍDICO</h1>
+            <h2>GONZÁLEZ GARCÍA</h2>
+            <P>&</P>
+            <h2>GONZÁLEZ TEJADA</h2>
         </div>
-        <div>
-            <a class="btn btn-primary" href="/clientes">Clientes</a>
-            <button type="button" class="btn btn-secondary">Nuevo Expediente</button>
-            <button type="button" class="btn btn-outline-danger d-block form-control">Ver Agenda</button>
+
+    </section>
+
+    <section class=" py-4" id="servicios" style="background: rgba(66,134,244,.6);">
+        <div class="container">
+            <h2 class="text-center">Nuestros Servicios</h2>
+            <div class="row" >
+            {% for row in [1,2,3] %}
+                <div class="col-md-4">
+                    <div class="card" style="width:100%">
+                      <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio {{row}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        b5
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
 
-    <section class="bg-white py-4">
+    <section class="bg-white py-4" id="equipo">
+        <div class="container">
+            <h2 class="text-center">Nuestros Servicios</h2>
+            <div class="row" >
+            {% for row in [1,2,3] %}
+                <div class="col-md-4">
+                    <div class="card" style="width:100%">
+                      <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio {{row}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        b5
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-4" id="sobre">
+        <div class="container">
+            <h2 class="text-center">Nuestros Servicios</h2>
+            <div class="row" >
+            {% for row in [1,2,3] %}
+                <div class="col-md-4">
+                    <div class="card" style="width:100%">
+                      <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio {{row}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        b5
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-4" id="contactar">
         <div class="container">
             <h2 class="text-center">Nuestros Servicios</h2>
             <div class="row" >

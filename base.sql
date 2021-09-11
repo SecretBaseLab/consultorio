@@ -238,3 +238,7 @@ create table usuarios(
     user_name varchar(50),
     password text not null
 );
+
+CREATE TABLE contraseña_master(  
+    contraseña text not null
+)

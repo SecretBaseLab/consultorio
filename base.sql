@@ -236,9 +236,13 @@ create table usuarios(
     telefono varchar(10) not null,
     correo varchar(100) not null,
     user_name varchar(50),
-    password text not null
+    password text not null,
+    created_at DATETIME,
+    updated_at DATETIME
 );
 
-CREATE TABLE contraseña_master(  
-    contraseña text not null
+CREATE TABLE pass_master(  
+    password text not null,
+    created_at DATETIME,
+    updated_at DATETIME
 )

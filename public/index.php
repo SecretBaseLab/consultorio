@@ -77,13 +77,13 @@ $map->post('postNewExpedienteForm', $dir_raiz . 'expediente/add', [
     "action" => "postNewExpedienteFormAction"
 ]);
 
-$map->get('getFormContraseniaMaster', $dir_raiz . 'passMaster', [
-    "controller" => "App\Controllers\contraseniaMasterController",
-    "action" => "getFormContraseñaMasterAction"
+$map->get('getFormPassMaster', $dir_raiz . 'passMaster', [
+    "controller" => "App\Controllers\passMasterController",
+    "action" => "getFormPassMasterAction"
 ]);
-$map->post('postSaveContraseniaMaster', $dir_raiz . 'passMaster', [
-    "controller" => "App\Controllers\contraseniaMasterController",
-    "action" => "postSaveContraseñaMasterAction"
+$map->post('postSavePassMaster', $dir_raiz . 'passMaster', [
+    "controller" => "App\Controllers\passMasterController",
+    "action" => "postSavePassMasterAction"
 ]);
 
 $matcher = $routerContainer->getMatcher();

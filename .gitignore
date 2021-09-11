@@ -1,5 +1,3 @@
 public/uploads
 vendor
 composer.phar
-base.db
-/.env

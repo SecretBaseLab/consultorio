@@ -106,9 +106,9 @@ Login |
                         aria-labelledby="pills-login-tab">
                         <h4>Iniciar sesion</h4>
                         <form action="post" id="form_login" class="" method="POST">
-                            <input type="text" name="username" id="username" placeholder="Nombre de Usuario" class=""
+                            <input type="text" name="username"  placeholder="Nombre de Usuario" class=""
                                 required>
-                            <input type="password" name="password" id="password" placeholder="Tu contraseña" class=""
+                            <input type="password" name="password" placeholder="Tu contraseña" class=""
                                 required>
                             <input type="submit" value="Login" class="btn btn-info form-control my-2">
                             <a href="#">
@@ -119,12 +119,12 @@ Login |
                     <div class="tab-pane fade text-white" id="pills-signup" role="tabpanel"
                         aria-labelledby="pills-signup-tab">
                         <h4>Registrar nuevo usuario</h4>
-                        <form action="post" id="form_singup" method="POST">
+                        <form action="signup" id="form_singup" method="POST">
                             <input type="text" class="" name="cedula" id="cedula" placeholder="Tu número de cédula"
                                 required pattern="[0-9]{10}">
                             <select class="form-select my-2" name="rol" id="rol" required>
                                 <option value="" selected disabled>Seleccionar Rol</option>
-                                <option value="Administrador">Administrador</option>
+                                <option value="Admin">Administrador</option>
                                 <option value="usuario">Usuario comun</option>
                             </select>
                             <div class="row">
@@ -141,9 +141,9 @@ Login |
                                 placeholder="Tu número de telefono" required>
                             <input type="email" name="email" id="email" placeholder="Correo: email@example.com" class=""
                                 required>
-                            <input type="text" name="username" id="username" class="" placeholder="Tu nombre de usuario"
+                            <input type="text" name="username"  class="" placeholder="Tu nombre de usuario"
                                 required>
-                            <input type="password" name="password" id="password" class="" placeholder="Tu contraseña"
+                            <input type="password" name="password" class="" placeholder="Tu contraseña"
                                 required>
 
                             <label for="passMaster" class="pt-3">
@@ -162,6 +162,10 @@ Login |
 
     </div>
 </section>
+{% autoescape 'html' %}
+    <h1>hola</h1>
+    {{responseMessage|escape }}
+{% endautoescape %}
 
 <script>
     window.onload = () => {
@@ -170,6 +174,7 @@ Login |
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     }
+
 </script>
 
 {% endblock %}

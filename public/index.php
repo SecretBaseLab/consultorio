@@ -49,9 +49,13 @@ $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();      //? generador del mapa de rutas
 
 //rutas
-$map->get('login', $dir_raiz . 'login', [
-    "controller" => "App\Controllers\LoginController",
+$map->get('getLogin', $dir_raiz . 'login', [
+    "controller" => "App\Controllers\loginController",
     "action" => "getFormLoginAction"
+]);
+$map->post('postSignUp', $dir_raiz . 'signup', [
+    "controller" => "App\Controllers\loginController",
+    "action" => "postSignUpAction"
 ]);
 
 $map->get('index', $dir_raiz, [
@@ -61,29 +65,41 @@ $map->get('index', $dir_raiz, [
 
 $map->get('getClientes', $dir_raiz . 'clientes', [
     "controller" => "App\Controllers\ClienteController",
-    "action" => "getClientesAction"
+    "action" => "getClientesAction",
+    "auth" => true
 ]);
 $map->post('saveClientes', $dir_raiz . 'clientes/add', [
     "controller" => "App\Controllers\ClienteController",
-    "action" => "postSaveClientesAction"
+    "action" => "postSaveClientesAction",
+    "auth" => true
 ]);
 
 $map->get('getExpedienteForm', $dir_raiz . 'expediente/{cedula}', [
     "controller" => "App\Controllers\ExpedienteController",
-    "action" => "getExpedienteFormAction"
+    "action" => "getExpedienteFormAction",
+    "auth" => true
 ]);
 $map->post('postNewExpedienteForm', $dir_raiz . 'expediente/add', [
     "controller" => "App\Controllers\ExpedienteController",
-    "action" => "postNewExpedienteFormAction"
+    "action" => "postNewExpedienteFormAction",
+    "auth" => true
 ]);
 
 $map->get('getFormPassMaster', $dir_raiz . 'passMaster', [
     "controller" => "App\Controllers\passMasterController",
-    "action" => "getFormPassMasterAction"
+    "action" => "getFormPassMasterAction",
+    "auth" => true
 ]);
 $map->post('postSavePassMaster', $dir_raiz . 'passMaster', [
     "controller" => "App\Controllers\passMasterController",
-    "action" => "postSavePassMasterAction"
+    "action" => "postSavePassMasterAction",
+    "auth" => true
+]);
+
+$map->get('getDashboard', $dir_raiz . 'dashboard', [
+    "controller" => "App\Controllers\dashboardController",
+    "action" => "getDashboardAction",
+    "auth" => true
 ]);
 
 $matcher = $routerContainer->getMatcher();

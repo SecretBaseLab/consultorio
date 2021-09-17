@@ -6,7 +6,7 @@ use Respect\Validation\Validator as v;
 use Laminas\Diactoros\Response\RedirectResponse;
 
 
-class loginController extends CoreController{
+class dashboardController extends CoreController{
     public function getDashboardAction(){
         return $this->renderHTML('dashboard.twig');
     }

@@ -80,6 +80,12 @@ Login |
     .btnFormOption button {
         width: 100%;
     }
+
+    .alertMessage{
+        position: fixed;
+        right: 10px;
+        bottom: 30px;
+    }
 </style>
 
 <section class="py-4 " id="autenticacion">
@@ -96,7 +102,7 @@ Login |
                             aria-selected="true">Login</button>
                     </li>
                     <li class="nav-item btnFormOption" role="presentation">
-                        <button class="nav-link text-white " id="pills-signup-tab" data-bs-toggle="pill"
+                        <button class="nav-link text-white " id="pills_signup_tab" data-bs-toggle="pill"
                             data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup"
                             aria-selected="false">Sign-up</button>
                     </li>
@@ -105,7 +111,7 @@ Login |
                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
                         aria-labelledby="pills-login-tab">
                         <h4>Iniciar sesion</h4>
-                        <form action="post" id="form_login" class="" method="POST">
+                        <form id="form_login" method="POST" action="/login">
                             <input type="text" name="username"  placeholder="Nombre de Usuario" class=""
                                 required>
                             <input type="password" name="password" placeholder="Tu contraseña" class=""
@@ -117,9 +123,9 @@ Login |
                         </form>
                     </div>
                     <div class="tab-pane fade text-white" id="pills-signup" role="tabpanel"
-                        aria-labelledby="pills-signup-tab">
+                        aria-labelledby="pills_signup_tab">
                         <h4>Registrar nuevo usuario</h4>
-                        <form action="signup" id="form_singup" method="POST">
+                        <form action="/signup" id="form_singup" method="POST">
                             <input type="text" class="" name="cedula" id="cedula" placeholder="Tu número de cédula"
                                 required pattern="[0-9]{10}">
                             <select class="form-select my-2" name="rol" id="rol" required>
@@ -157,15 +163,18 @@ Login |
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
-
     </div>
 </section>
-{% autoescape 'html' %}
-    <h1>hola</h1>
-    {{responseMessage|escape }}
-{% endautoescape %}
+
+<div class="alertMessage">
+    {% autoescape "html" %}
+        {{ responseMessage|raw }}
+    {% endautoescape %}
+            
+</div>
+
 
 <script>
     window.onload = () => {
@@ -173,6 +182,8 @@ Login |
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
+        
+       {{ pills_signup|raw }}
     }
 
 </script>

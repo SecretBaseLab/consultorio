@@ -53,6 +53,15 @@ $map->get('getLogin', $dir_raiz . 'login', [
     "controller" => "App\Controllers\loginController",
     "action" => "getFormLoginAction"
 ]);
+$map->post('Login', $dir_raiz . 'login', [
+    "controller" => "App\Controllers\loginController",
+    "action" => "loginAction"
+]);
+$map->get('logout', $dir_raiz . 'logout', [
+    "controller" => "App\Controllers\loginController",
+    "action" => "getLogoutAction",
+    "auth" => true
+]);
 $map->post('postSignUp', $dir_raiz . 'signup', [
     "controller" => "App\Controllers\loginController",
     "action" => "postSignUpAction"

@@ -62,8 +62,8 @@ class loginController extends CoreController{
             ->key('rol', v::stringType()->notEmpty()->noWhitespace())
             ->key('nombres', v::stringType()->notEmpty()->noWhitespace())
             ->key('apellidos', v::stringType()->notEmpty()->noWhitespace())
-            ->key('telefono', v::stringType()->notEmpty()->noWhitespace())
-            ->key('email', v::stringType()->notEmpty()->noWhitespace())
+            ->key('telefono', v::stringType()->notEmpty()->noWhitespace()->phone())
+            ->key('email', v::stringType()->notEmpty()->noWhitespace()->email())
             ->key('username', v::stringType()->notEmpty()->noWhitespace())
             ->key('password', v::stringType()->notEmpty()->noWhitespace())
             ->key('passMaster', v::stringType()->notEmpty()->noWhitespace());
@@ -111,7 +111,8 @@ class loginController extends CoreController{
         }
         $assets = new assetsControler();
         return $this->renderHTML('login.twig', [
-            'responseMessage' => $assets->alert($responseMessage, 'warning', '<i class="fas fa-exclamation-triangle"></i>')
+            'responseMessage' => $assets->alert($responseMessage, 'warning', '<i class="fas fa-exclamation-triangle"></i>'),
+            'pills_signup' => 'pills_signup_tab.click();'
         ]);
     }
 

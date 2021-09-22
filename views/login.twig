@@ -84,7 +84,7 @@ Login |
     .alertMessage{
         position: fixed;
         right: 10px;
-        bottom: 30px;
+        top: 10px;
     }
 </style>
 
@@ -136,21 +136,21 @@ Login |
                             <div class="row">
                                 <div class="col-sm-6">
                                     <input type="text" name="nombres" id="nombres" class="" placeholder="Tus nombres"
-                                        required>
+                                        required pattern="[A-Za-z]{3,}">
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" name="apellidos" id="apellidos" class=""
-                                        placeholder="Tus apellidos" required>
+                                        placeholder="Tus apellidos" required pattern="[A-Za-z]{3,}">
                                 </div>
                             </div>
                             <input type="tel" name="telefono" id="telefono" class="" pattern="[0-9]{10}"
                                 placeholder="Tu número de telefono" required>
                             <input type="email" name="email" id="email" placeholder="Correo: email@example.com" class=""
-                                required>
+                                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                             <input type="text" name="username"  class="" placeholder="Tu nombre de usuario"
-                                required>
+                                required pattern="[A-Za-z0-9]{3,}" title="Solo letras y números" data-bs-toggle="tooltip">
                             <input type="password" name="password" class="" placeholder="Tu contraseña"
-                                required>
+                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" data-bs-toggle="tooltip" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
 
                             <label for="passMaster" class="pt-3">
                                 <h5>Contraseña de registro</h5>

@@ -14,6 +14,31 @@
         .home-text{
             font-family: 'Dancing Script', cursive;
         }
+
+        .card{
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            margin: 5px 0;
+            color: white;
+        }
+        .card-body{
+            background-color: rgba(255, 255, 255, .3);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            /* filter: blur(22px); */
+            border-radius: 0 0 10px 10px;
+        }
+
+        .card-img-top{
+            height: 300px;
+           object-fit: cover;
+           border-radius: 10px 10px 0 0 ;
+        }
+
+        #servicios, #equipo, #sobre, #contactar {
+            background: rgba(66,134,244,.6);
+        }
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
@@ -27,7 +52,28 @@
 
     </section>
 
-    <section class=" py-4" id="servicios" style="background: rgba(66,134,244,.6);">
+    <section class=" py-4" id="servicios" >
+        <div class="container">
+            <h2 class="text-center">Nuestros Servicios</h2>
+            <div class="row" >
+            {% for row in [1,2,3] %}
+                <div class="col-md-4">
+                    <div class="card" style="width:100%">
+                       <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="..." >
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio {{row}}</h5>
+                        <h6 class="card-subtitle mb-2 ">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        b5
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class=" py-4" id="equipo">
         <div class="container">
             <h2 class="text-center">Nuestros Servicios</h2>
             <div class="row" >
@@ -48,7 +94,7 @@
         </div>
     </section>
 
-    <section class="bg-white py-4" id="equipo">
+    <section class=" py-4" id="sobre">
         <div class="container">
             <h2 class="text-center">Nuestros Servicios</h2>
             <div class="row" >
@@ -69,28 +115,7 @@
         </div>
     </section>
 
-    <section class="bg-white py-4" id="sobre">
-        <div class="container">
-            <h2 class="text-center">Nuestros Servicios</h2>
-            <div class="row" >
-            {% for row in [1,2,3] %}
-                <div class="col-md-4">
-                    <div class="card" style="width:100%">
-                      <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Servicio {{row}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        b5
-                      </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white py-4" id="contactar">
+    <section class=" py-4" id="contactar">
         <div class="container">
             <h2 class="text-center">Nuestros Servicios</h2>
             <div class="row" >

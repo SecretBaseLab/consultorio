@@ -3,13 +3,13 @@
 {% block plantilla %}
     <style>
         body{
-            background-image: url("../public/uploads/home-background.jpg");
+            background-image: var(--background_img_home);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
         .fondo_logo{
-            background-image: linear-gradient(to bottom , rgba(55,59,68,.4), rgba(66,134,244,.6));
+            background-image: linear-gradient(to bottom , var(--gradiente_home_top), var(--background_home));
         }
         .home-text{
             font-family: 'Dancing Script', cursive;
@@ -22,9 +22,9 @@
             color: white;
         }
         .card-body{
-            background-color: rgba(255, 255, 255, .3);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
+            background-color: var(--card_glass_color);
+            -webkit-backdrop-filter: blur(var(--blur_cristal_mode));
+            backdrop-filter: blur(var(--blur_cristal_mode));
             /* filter: blur(22px); */
             border-radius: 0 0 10px 10px;
         }
@@ -36,7 +36,7 @@
         }
 
         #servicios, #equipo, #sobre, #contactar {
-            background: rgba(66,134,244,.6);
+            background: var(--background_home);
         }
 
     </style>

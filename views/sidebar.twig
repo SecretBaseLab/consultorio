@@ -1,0 +1,223 @@
+{% block sidebar %}
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    /* min-height: 100vh; */
+}
+.sidebar{
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    border-radius: 0 10px 10px 0; 
+    box-sizing: initial; 
+    border-left: 5px solid var(--sidebar_selected_item);
+    background: var(--sidebar_background);
+        -webkit-backdrop-filter: blur(var(--blur_cristal_mode));
+        backdrop-filter: blur(var(--blur_cristal_mode));
+    transition: width 0.2s;
+
+    overflow-x: hidden;
+}  
+ .sidebar::-webkit-scrollbar {
+   display: none;
+}
+.sidebar.active{    /*pa volver a mostrar el menu*/
+    width: 250px;
+}
+.sidebar ul{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 40px;
+} 
+.sidebar ul li{
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-radius: 20px 0 0 20px;
+}
+.sidebar ul li:hover{
+    background: var(--sidebar_item_hover);
+}
+.sidebar ul li.active{
+    background: var(--sidebar_selected_item);
+}
+
+/* .sidebar ul li b:nth-child(1){
+    position: absolute;
+    top: -20px;
+    height: 20px;
+    width: 100%;
+    background: #fff;
+    display: none;
+}
+.sidebar ul li b:nth-child(1)::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: #b6b6b6;
+    border-bottom-right-radius: 20px;
+}
+.sidebar ul li b:nth-child(2){
+    position: absolute;
+    bottom: -20px;
+    height: 20px;
+    width: 100%;
+    background: #fff;
+    display: none;
+}
+.sidebar ul li b:nth-child(2)::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: #b6b6b6;
+    border-top-right-radius: 20px;
+}
+.sidebar ul li.active b:nth-child(1),
+.sidebar ul li.active b:nth-child(2){  
+    display: block;
+} */
+
+.sidebar ul li a{
+    position: relative;
+    display:block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #000000;
+}
+.sidebar ul li.active a{
+    color: var(--sidebar_selected_item_text);
+}
+.sidebar ul li a .icon{
+    position: relative;
+    display:block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.sidebar ul li a .icon i{
+    font-size: 1.5em;
+}
+.sidebar ul li a .title{
+    position:relative;
+    display:block;
+    padding-left: 10px;
+    height: 60px;
+    line-height: 60px;  
+    white-space: normal; /* pa acomodar el texto en la pantalla */
+}
+
+.toggle{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #6a6a6a;
+    border-radius: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggle.active{
+    background: var(--sidebar_selected_item);
+}
+.toggle i{
+    position: absolute;
+    color: white;
+    font-size: 34px;
+    display: none;
+}
+.toggle i.open,
+.toggle.active i.close{
+    display: block;
+}
+.toggle.active i.open,
+.toggle i.close{
+    display: none;
+}   
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .sidebar{
+    width: 0;
+  }
+}
+</style>
+
+<div class="toggle">
+    <i class="fas fa-bars open"></i>
+    <i class="fas fa-times close"></i>
+</div>
+<div class="sidebar">
+    <ul>
+        <li class="lista">
+            <a href="/dashboard">
+                <span class="icon"><i class="fas fa-columns"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+        <li class="lista">
+            <a href="/clientes">
+                <span class="icon"><i class="fas fa-users"></i></span>
+                <span class="title">Clientes</span>
+            </a>
+        </li>
+        {% for row in [1,2,3, 4, 5, 6, 7, 8, 9, 10] %}
+        <li class="lista">
+            <a href="#">
+                <span class="icon"><i class="fas fa-house-user"></i></span>
+                <span class="title">Item {{row}}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+<script>
+    //control del toggle
+    let menuToggle = document.querySelector('.toggle')
+    let sidebar = document.querySelector('.sidebar')
+    menuToggle.onclick = ()=>{
+        menuToggle.classList.toggle('active')   //metodo para alternar una clase
+        sidebar.classList.toggle('active')
+    }
+    // control del elemento activo
+    let lista = document.querySelectorAll('.lista');
+    for (let i = 0; i < lista.length; i++) {
+        lista[i].onclick = ()=>{
+            let j=0;
+            while (j < lista.length) {
+                lista[j++].className='lista';
+            }
+            lista[i].className = 'lista active';
+        }
+        
+    }
+    
+</script>
+{% endblock %}

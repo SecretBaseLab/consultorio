@@ -5,6 +5,11 @@ Clientes |
 {{ parent() }}
 {% endblock %}
 
+{% block navbar %}
+  {% use "sidebar.twig" %}
+  {{ block('sidebar') }}
+{% endblock %}
+
 {% block plantilla %}
 <div class="container">
     <br>
@@ -71,3 +76,6 @@ Clientes |
 
 </div>
 {% endblock %}
+
+{% block footer %}{% endblock %}
+{% block scripts %}{% endblock %}

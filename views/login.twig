@@ -7,8 +7,7 @@ Login |
 {% block navbar %}{% endblock %}
 {% block footer %}{% endblock %}
 
-{% block plantilla %}
-
+{% block styles %}
 <style>
     body {
         background-image: var(--background_img_home);
@@ -90,7 +89,9 @@ Login |
         top: 10px;
     }
 </style>
+{% endblock %}
 
+{% block plantilla %}
 <section class="py-4 " id="autenticacion">
     <div class="forms_container container">
         <div class="row">
@@ -177,8 +178,9 @@ Login |
     {% endautoescape %}
             
 </div>
+{% endblock %}
 
-
+{% block scripts %}
 <script>
     window.onload = () => {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -190,5 +192,4 @@ Login |
     }
 
 </script>
-
 {% endblock %}

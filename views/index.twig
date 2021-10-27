@@ -1,45 +1,48 @@
 {% extends "main.twig" %}
+{% block styles %}
+<style>
+    body{
+        background-image: var(--background_img_home);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .fondo_logo{
+        background-image: linear-gradient(to bottom , var(--gradiente_home_top), var(--background_home));
+    }
+    .home-text{
+        font-family: 'Dancing Script', cursive;
+    }
+
+    .card{
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        margin: 5px 0;
+        color: white;
+    }
+    .card-body{
+        background-color: var(--card_glass_color);
+        -webkit-backdrop-filter: blur(var(--blur_cristal_mode));
+        backdrop-filter: blur(var(--blur_cristal_mode));
+        /* filter: blur(22px); */
+        border-radius: 0 0 10px 10px;
+    }
+
+    .card-img-top{
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0 ;
+    }
+
+    #servicios, #equipo, #sobre, #contactar {
+        background: var(--background_home);
+    }
+
+</style>
+{% endblock %}
 
 {% block plantilla %}
-    <style>
-        body{
-            background-image: var(--background_img_home);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-        .fondo_logo{
-            background-image: linear-gradient(to bottom , var(--gradiente_home_top), var(--background_home));
-        }
-        .home-text{
-            font-family: 'Dancing Script', cursive;
-        }
-
-        .card{
-            background-color: rgba(255, 255, 255, 0);
-            border: none;
-            margin: 5px 0;
-            color: white;
-        }
-        .card-body{
-            background-color: var(--card_glass_color);
-            -webkit-backdrop-filter: blur(var(--blur_cristal_mode));
-            backdrop-filter: blur(var(--blur_cristal_mode));
-            /* filter: blur(22px); */
-            border-radius: 0 0 10px 10px;
-        }
-
-        .card-img-top{
-            height: 300px;
-           object-fit: cover;
-           border-radius: 10px 10px 0 0 ;
-        }
-
-        #servicios, #equipo, #sobre, #contactar {
-            background: var(--background_home);
-        }
-
-    </style>
+    
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <section class="d-flex flex-column justify-content-center align-items-center vh-100 fondo_logo">
@@ -136,3 +139,4 @@
         </div>
     </section>
 {% endblock %}
+{% block scripts %}{% endblock %}

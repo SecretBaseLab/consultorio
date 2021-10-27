@@ -1,4 +1,5 @@
 {% extends "main.twig" %}
+
 {% block title %}
 Dashboard |
 {{ parent() }}
@@ -12,35 +13,12 @@ Dashboard |
         background-attachment: fixed;
         background-size: cover;
     }
-
-    .fa-sign-out-alt{
-        font-size: 1.6rem;
-    }
-    .logout_nav{
-        float: right;
-    }
-
-    .navbar{
-        background-color: var(--card_glass_color);
-            -webkit-backdrop-filter: blur(var(--blur_cristal_mode));
-            backdrop-filter: blur(var(--blur_cristal_mode));
-    }
 </style>
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-light ">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/dashboard">
-          <i class="fas fa-house-user"></i>
-          Oficina
-      </a>
-      <a class="navbar-brand logout_nav" href="/logout">
-          Salir
-          <i class="fas fa-sign-out-alt"></i>
-      </a>
-    </div>
-  </nav>
+  {% use "sidebar.twig" %}
+  {{ block('sidebar') }}
 {% endblock %}
 
 {% block plantilla %}
@@ -50,3 +28,4 @@ Dashboard |
 {% endblock %}
 
 {% block footer %}{% endblock %}
+{% block scripts %}{% endblock %}
